@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天津大学校门管控系统</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #0040FF; /* Blue background */
+  }
+  .header {
+    background-color: #000; /* Black header */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 24px;
+  }
+  .content {
+    padding: 20px;
+    position: relative;
+  }
+  .scan-result {
+    color: #fff; /* White text */
+    font-size: 20px;
+    margin-left: 10px; /* Align with the content padding */
+  }
+  .white-box {
+    background-color: #fff; /* White box */
+    width: calc(100% - 40px); /* Screen width minus padding */
+    height: 75vh; /* 75% of the viewport height */
+    margin: 20px auto; /* Center the box horizontally */
+    position: relative; /* For inner content positioning */
+    padding: 20px; /* Padding inside the white box */
+    box-sizing: border-box; /* Include padding and border in the box's width */
+    overflow: auto; /* Enable scrolling if content overflows */
+  }
+  .update-text {
+    color: #696969; /* Dark grey text */
+    font-size: 14px;
+  }
+  .horizontal-line {
+    border-bottom: 1px solid #D3D3D3; /* Grey line */
+    margin: 10px 0;
+  }
+  .current-date {
+    font-size: 14px; /* Keeping the date font size unchanged */
+    text-align: center;
+  }
+  .current-time {
+    font-size: 24px; /* Larger font size for the time */
+    text-align: center;
+  }
+  .checkmark {
+    text-align: center;
+    font-size: 24px;
+    color: green; /* Green check mark color */
+    margin-top: 10px;
+    margin-bottom: 10px; 
+  }
+
+    .allowed-entry {
+        color: red;
+        font-size: 30px; /* 30px font size for "允许通行" */
+        text-align: center;
+        margin-bottom: 10px; /* Space below the text */
+    }
+
+    .welcome-message {
+            color: blue;
+            font-size: 20px; /* 20px font size for the welcome message */
+            text-align: center;
+        }
+    .info-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px; /* Same as the update text */
+            color: black;
+            margin-top: 10px; /* Space above each line */
+        }
+
+    .horizontal-line-small {
+            border-bottom: 1px solid #D3D3D3; /* Grey line */
+            margin-top: 5px; /* Space below each line */
+        }
+</style>
+</head>
+<body>
+
+<div class="header">
+  天津大学校门管控系统
+</div>
+<div class="content">
+  <div class="scan-result">
+    &larr; 扫码结果
+  </div>
+  <div class="white-box">
+    <div class="update-text">
+      更新于：2023-08-31 08:16:59
+    </div>
+    <div class="horizontal-line"></div>
+    <div class="current-date" id="current-date"></div>
+    <div class="current-time" id="current-time"></div>
+    <div class="checkmark">
+        <img src="pic.jpg" alt="Checkmark" style="width: 50px; height: 50px;"> <!-- Adjust the path and size as needed -->
+      </div>
+    <div class="allowed-entry">
+        允许通行
+    </div>
+    <div class="welcome-message">
+        欢迎通过卫津路铭德路进口
+    </div>
+    <div class="info-line">
+        <span>姓名：</span><span>杨月仪</span>
+    </div>
+    <div class="horizontal-line-small"></div>
+    <div class="info-line">
+        <span>学工号：</span><span>2023202063</span>
+    </div>
+    <div class="horizontal-line-small"></div>
+    <div class="info-line">
+        <span>人员类型：</span><span>研究生</span>
+    </div>
+</div>
+      
+
+
+<script>
+    function updateDateTime() {
+      var now = new Date();
+      var dateStr = now.getFullYear() + '-' +
+                    ('0' + (now.getMonth() + 1)).slice(-2) + '-' +
+                    ('0' + now.getDate()).slice(-2);
+      var seconds = ('0' + now.getSeconds()).slice(-2);
+      var tenthsOfSecond = Math.floor(now.getMilliseconds() / 100);
+  
+      // Wrap the seconds in a span with blue color, and the tenths of a second in red
+      var timeStr = ('0' + now.getHours()).slice(-2) + ':' +
+                    ('0' + now.getMinutes()).slice(-2) + ':' +
+                    '<span style="color: blue;">' + seconds + '</span>' + // Seconds in blue
+                    '<span style="color: red;">.' + tenthsOfSecond + '</span>'; // Tenth of a second in red
+  
+      document.getElementById('current-date').textContent = dateStr;
+      document.getElementById('current-time').innerHTML = timeStr; // Use innerHTML to parse the span tags
+    }
+    
+    // Update date and time every 100 milliseconds (10 times per second)
+    setInterval(updateDateTime, 100);
+    updateDateTime(); // Initial call to display the date and time immediately
+  </script>
+  
+  
+  
+
+</body>
+</html>
