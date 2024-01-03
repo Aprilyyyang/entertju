@@ -98,7 +98,28 @@
 <div class="header">
   天津大学校门管控系统
 </div>
-<div class="content">
+
+
+<!-- Input form -->
+<div class="input-form" style="text-align: center; margin-top: 20px;">
+    <div>
+      <label for="nameInput">姓名：</label>
+      <input type="text" id="nameInput" placeholder="输入姓名">
+    </div>
+    <div style="margin-top: 10px;">
+        <label for="entranceSelect">入口：</label>
+        <select id="entranceSelect">
+            <option value="东门">东门</option>
+            <option value="西门">西门</option>
+            <option value="北门">北门</option>
+            <option value="铭德路">铭德路</option>
+        </select>
+    </div>
+    <button onclick="submitForm()">提交</button>
+  </div>
+
+
+<div class="content" style="display: none;">
   <div class="scan-result">
     &larr; 扫码结果
   </div>
@@ -116,11 +137,11 @@
     <div class="allowed-entry">
         允许通行
     </div>
-    <div class="welcome-message">
-        欢迎通过卫津路铭德路进口
+    <div class="welcome-message" id="welcomeMessage">
+        欢迎通过卫津路<span id="entranceName">铭德路</span>进口
     </div>
     <div class="info-line">
-        <span>姓名：</span><span>杨月仪</span>
+        <span>姓名：</span><span id="userName">杨月仪</span>
     </div>
     <div class="horizontal-line-small"></div>
     <div class="info-line">
@@ -153,6 +174,23 @@
       document.getElementById('current-time').innerHTML = timeStr; // Use innerHTML to parse the span tags
     }
     
+    function submitForm() {
+    // Get input values
+    var name = document.getElementById('nameInput').value;
+    var selectedEntrance = document.getElementById('entranceSelect').value;
+
+    // Update content
+    document.getElementById('userName').textContent = name;
+    document.getElementById('entranceName').textContent = selectedEntrance; // Corrected ID
+
+    // Hide form and show main content
+    document.querySelector('.input-form').style.display = 'none';
+    document.querySelector('.content').style.display = 'block';
+}
+
+
+
+
     // Update date and time every 100 milliseconds (10 times per second)
     setInterval(updateDateTime, 100);
     updateDateTime(); // Initial call to display the date and time immediately
