@@ -31,7 +31,7 @@
   .white-box {
     background-color: #fff; /* White box */
     width: calc(100% - 40px); /* Screen width minus padding */
-    height: 65vh; /* 75% of the viewport height */
+    height: 55vh; /* 75% of the viewport height */
     margin: 20px auto; /* Center the box horizontally */
     position: relative; /* For inner content positioning */
     padding: 20px; /* Padding inside the white box */
@@ -145,7 +145,7 @@
     </div>
     <div class="horizontal-line-small"></div>
     <div class="info-line">
-        <span>学工号：</span><span>2023202063</span>
+        <span>学工号：</span><span id="studentId">2023202063</span>
     </div>
     <div class="horizontal-line-small"></div>
     <div class="info-line">
@@ -187,6 +187,15 @@
     document.querySelector('.input-form').style.display = 'none';
     document.querySelector('.content').style.display = 'block';
 }
+
+
+    function generateRandomId() {
+        var fixedPart = "20232";
+        var randomPart = Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+        document.getElementById('studentId').textContent = fixedPart + randomPart;
+    }
+
+    window.onload = generateRandomId;
 
 
 
