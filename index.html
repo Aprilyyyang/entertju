@@ -31,12 +31,13 @@
   .white-box {
     background-color: #fff; /* White box */
     width: calc(100% - 40px); /* Screen width minus padding */
-    height: 50vh; /* 75% of the viewport height */
+    height: 45vh; /* 75% of the viewport height */
     margin: 20px auto; /* Center the box horizontally */
     position: relative; /* For inner content positioning */
     padding: 20px; /* Padding inside the white box */
     box-sizing: border-box; /* Include padding and border in the box's width */
     overflow: auto; /* Enable scrolling if content overflows */
+    border-radius: 15px; 
   }
   .update-text {
     color: #696969; /* Dark grey text */
@@ -48,13 +49,13 @@
   }
   .current-date {
     font-size: 20px; /* Keeping the date font size unchanged */
-    padding-left: 770px;
+    text-align: right;
     
   }
   .current-time {
     font-size: 24px; /* Larger font size for the time */
     
-    padding-left: 790px;
+    text-align: right;
   }
   .checkmark {
     text-align: center;
@@ -69,6 +70,7 @@
         font-size: 30px; /* 30px font size for "允许通行" */
         text-align: center;
         margin-bottom: 10px; /* Space below the text */
+        clear: both;
     }
 
     .welcome-message {
@@ -108,8 +110,9 @@
     <div class="current-date" id="current-date"></div>
     <div class="current-time" id="current-time"></div>
     <div class="checkmark">
-        <img src="pic.jpg" alt="Checkmark" style="width: 65px; height: 60px; padding-left: 800px;"> <!-- Adjust the path and size as needed -->
+        <img src="pic.jpg" alt="Checkmark" style="width: 65px; height: 60px; float: right; margin-left: 10px;"> <!-- Adjust the path and size as needed -->
       </div>
+    <br>
     <div class="allowed-entry">
         允许通行
     </div>
